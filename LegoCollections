@@ -1,0 +1,71 @@
+Select *
+From dbo.LegoSetsOwned
+
+
+Select Theme, Subtheme, [Set name], [Value new (USD)], [Value used (USD)]
+From dbo.LegoSetsOwned
+
+Select Theme, [Set name], [Value new (USD)], [Value used (USD)]
+From dbo.LegoSetsOwned
+ORDER BY [Value new (USD)]
+
+
+Select Theme, [Set name], [Value new (USD)]
+From dbo.LegoSetsOwned
+ORDER BY [Value new (USD)]
+
+
+Select [Set name], [Value new (USD)]
+From dbo.LegoSetsOwned
+ORDER BY [Value new (USD)]
+
+
+
+Select TOP 20 [Set name], [Value new (USD)]
+From dbo.LegoSetsOwned
+ORDER BY  [Value new (USD)] desc
+
+
+Select [Value new (USD)]
+FROM dbo.LegoSetsOwned
+
+
+UPDATE LegoSetsOwned SET 
+       Value=[Value new (USD)]
+
+
+
+ALTER TABLE LegoSetsOwned
+ADD UsedValues varchar(255);
+
+
+
+UPDATE LegoSetsOwned SET 
+       UsedValues=[Value used (USD)]
+
+ALTER TABLE LegoSetsOwned
+DROP COLUMN Value
+
+
+ALTER TABLE LegoSetsOwned
+DROP COLUMN UsedValues
+
+
+UPDATE LegoSetsOwned
+SET [Value new (USD)]=0
+WHERE [Value new (USD)] IS NULL;
+
+
+UPDATE LegoSetsOwned
+SET [Value used (USD)]=0
+WHERE [Value used (USD)] IS NULL;
+
+
+SELECT TOP 100 [Set name], [Value new (USD)], [Value used (USD)]
+FROM dbo.LegoSetsOwned
+ORDER BY [Value new (USD)] DESC
+
+
+SELECT TOP 1 [Set name], [Value new (USD)], [Value used (USD)]
+FROM dbo.LegoSetsOwned
+ORDER BY [Value new (USD)] DESC
